@@ -15,6 +15,7 @@
 #include <signal.h>
 #include <sys/types.h>
 #include "include/my.h"
+#include "include/struct.h"
 
 int getlen(char *src)
 {
@@ -47,21 +48,17 @@ void reinit_struct(data_t *data)
 
 void items(data_t *data)
 {
-    for (int line = 0; line < data->lines - 1; ++line) {
-        for (int column = 0; column < data->len; ++column) {
+    for (int line = 0; line < data->lines - 1; ++line)
+        for (int column = 0; column < data->len; ++column)
             sort_item(line, column, data);
-        }
-    }
     get_player(data);
 }
 
 void reset_map(data_t *data)
 {
     reinit_struct(data);
-    for (int i = 0; i < data->lines - 1; ++i) {
-        for (int k = 0; k < data->len; ++k) {
+    for (int i = 0; i < data->lines - 1; ++i)
+        for (int k = 0; k < data->len; ++k)
             data->Tmap[i][k] = data->save_map[i][k];
-        }
-    }
     items(data);
 }

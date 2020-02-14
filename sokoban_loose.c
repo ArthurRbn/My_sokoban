@@ -15,6 +15,7 @@
 #include <signal.h>
 #include <sys/types.h>
 #include "include/my.h"
+#include "include/struct.h"
 
 void sort_x(int line, int column, data_t *data)
 {
@@ -28,11 +29,9 @@ void sort_x(int line, int column, data_t *data)
 void get_x(data_t *data)
 {
     data->x_fill = 0;
-    for (int line = 0; line < data->lines - 1; ++line) {
-        for (int column = 0; column < data->len; ++column) {
+    for (int line = 0; line < data->lines - 1; ++line)
+        for (int column = 0; column < data->len; ++column)
             sort_x(line, column, data);
-        }
-    }
 }
 
 int o_presence(data_t *data, int x, int y)
@@ -74,9 +73,8 @@ void loose_check(data_t *data)
         get_x(data);
         o_here = o_presence(data, data->TabX[i]->X, data->TabX[i]->Y);
         data->cnt = 0;
-        if (o_here == 0) {
+        if (o_here == 0)
             check_corners(data, data->TabX[i]->X, data->TabX[i]->Y, i);
-        }
         x_stuck += (data->cnt > 2)?1:0;
     }
     data->touch = (x_stuck == data->x_fill)?1:data->touch;

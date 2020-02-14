@@ -15,6 +15,7 @@
 #include <signal.h>
 #include <sys/types.h>
 #include "include/my.h"
+#include "include/struct.h"
 
 void free_all(data_t *data)
 {

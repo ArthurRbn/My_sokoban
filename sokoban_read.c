@@ -15,6 +15,7 @@
 #include <signal.h>
 #include <sys/types.h>
 #include "include/my.h"
+#include "include/struct.h"
 
 void sort_item(int line, int column, data_t *data)
 {
@@ -49,11 +50,9 @@ char **copy_map(char *map, data_t *data)
 
 void get_item(data_t *data)
 {
-    for (int line = 0; line < data->lines - 1; ++line) {
-        for (int column = 0; column < data->len; ++column) {
+    for (int line = 0; line < data->lines - 1; ++line)
+        for (int column = 0; column < data->len; ++column)
             sort_item(line, column, data);
-        }
-    }
     get_player(data);
 }
 
@@ -76,7 +75,8 @@ void fill_tab(char *map, data_t *data)
                 data->save_map[i][k] = 0;
             }
         }
-    } data->Tmap[i - 1] = NULL;
+    }
+    data->Tmap[i - 1] = NULL;
     data->save_map[i - 1] = NULL;
     data->Tmap = copy_map(map, data);
 }

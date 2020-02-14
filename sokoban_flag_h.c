@@ -21,11 +21,11 @@ int aff_h(void)
     struct stat *des = malloc(sizeof(struct stat));
     int size;
     char *txt;
-    int fd = open("USAGE", O_RDONLY);
+    int fd = open("help_txt", O_RDONLY);
 
     if (fd == -1)
         return (84);
-    stat("USAGE", des);
+    stat("help_txt", des);
     size = des->st_size;
     txt = malloc(sizeof(char) * (size + 1));
     read(fd, txt, size);

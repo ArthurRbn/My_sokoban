@@ -15,6 +15,7 @@
 #include <signal.h>
 #include <sys/types.h>
 #include "include/my.h"
+#include "include/struct.h"
 
 void game_loop(data_t *data)
 {
